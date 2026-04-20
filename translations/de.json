@@ -1,0 +1,17 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+            "no_serial_ports": "Es wurden keine seriellen Ports gefunden."
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "resource": "USB-Port"
+                },
+                "description": "USB-Port auf dem der Füllstandssensor installiert ist",
+                "title": "TEK603 / Proteus Ecometer"
+            }
+        }
+    }
+}

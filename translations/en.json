@@ -1,0 +1,17 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+            "no_serial_ports": "No serial ports were found."
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "resource": "USB port"
+                },
+                "description": "Select the USB port the Proteus Ecometer (TEK603) is connected to.",
+                "title": "Proteus Ecometer"
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "domain": "ecometer",
+    "name": "Proteus Ecometer",
+    "codeowners": [
+        "@marcschmiedchen"
+    ],
+    "config_flow": true,
+    "dependencies": [],
+    "documentation": "https://github.com/marcschmiedchen/home-assistant-wolf_ism8",
+    "integration_type": "device",
+    "iot_class": "local_polling",
+    "issue_tracker": "https://github.com/marcschmiedchen/home-assistant-wolf_ism8/issues",
+    "requirements": ["pyserial-asyncio-fast"],
+    "version": "1.0.0"
+}
