@@ -1,31 +1,27 @@
-"""Config flow for Proteus Ecometer integration"""
+"""
+Config flow for Proteus Ecometer integration
+"""
 
-import logging
-from serial.tools.list_ports import comports
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_RESOURCE
 from homeassistant.helpers import selector
+from serial.tools.list_ports import comports
+
 from .const import DOMAIN
 
-_LOGGER = logging.getLogger(__name__)
 
-
-class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-
+class EcometerCustomConfigFlow(config_entries.ConfigFlow):
     async def async_step_user(self, user_input=None):
         if user_input is not None:
-            return self.async_create_entry(
-                title=DOMAIN, data={CONF_RESOURCE: user_input[CONF_RESOURCE]}
-            )
+            return self.async_create_entry(title=DOMAIN, data=user_input)
 
         ports = await self.hass.async_add_executor_job(comports)
         if not ports:
             return self.async_abort(reason="no_serial_ports")
 
         port_options = [
-            {"value": p.device, "label": f"{p.device} – {p.description}"}
-            for p in ports
+            {"value": p.device, "label": f"{p.device} – {p.description}"} for p in ports
         ]
         default_port = next(
             (
@@ -39,7 +35,9 @@ class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         schema = vol.Schema(
             {
-                vol.Required(CONF_RESOURCE, default=default_port): selector.SelectSelector(
+                vol.Required(
+                    CONF_RESOURCE, default=default_port
+                ): selector.SelectSelector(
                     selector.SelectSelectorConfig(options=port_options)
                 )
             }
