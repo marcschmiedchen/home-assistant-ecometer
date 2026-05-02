@@ -17,7 +17,7 @@ The [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecomet
 - Manufacturer: [Proteus Messtechnik GmbH](https://www.proteus.de/)
 - Model: TEK603
 - Interface: USB (CP2102)
-- Protocol: reverse-engineered, CRC-16/XMODEM verified
+- Protocol: reverse-engineered
 
 ## Sensors
 
@@ -67,7 +67,7 @@ Der [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecomet
 - Hersteller: [Proteus Messtechnik GmbH](https://www.proteus.de/)
 - Modell: TEK603
 - Schnittstelle: USB (CP2102)
-- Protokoll: vollständig rückwärts-entwickelt, CRC-16/XMODEM-verifiziert
+- Protokoll: reverse-engineered
 
 ## Sensoren
 
