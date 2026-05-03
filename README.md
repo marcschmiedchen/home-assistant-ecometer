@@ -1,5 +1,6 @@
-[![hassfest](https://github.com/marcschmiedchen/ecometer/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/marcschmiedchen/ecometer/actions/workflows/hassfest.yaml)
+[![Validate with hassfest](https://github.com/marcschmiedchen/home-assistant-ecometer/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/marcschmiedchen/home-assistant-ecometer/actions/workflows/hassfest.yaml)
 [![HACS](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+
 
 [🇬🇧 English](#english) | [🇩🇪 Deutsch](#deutsch)
 
