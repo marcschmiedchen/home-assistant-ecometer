@@ -11,4 +11,3 @@ Connects via USB (Silicon Labs CP2102) and provides the following sensors:
 | Nutzkapazitaet | l | Usable volume |
 | Gesamtkapazitaet | l | Total vessel capacity |
 
-The device is auto-detected on setup. Reconnects automatically after USB disconnection.

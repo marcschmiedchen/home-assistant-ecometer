@@ -7,10 +7,25 @@
         "step": {
             "user": {
                 "data": {
+                    "connection_type": "Connection type"
+                },
+                "description": "Select connection type for Proteus Ecometer (TEK603).",
+                "title": "Proteus Ecometer"
+            },
+            "usb": {
+                "data": {
                     "resource": "USB port"
                 },
                 "description": "Select the USB port the Proteus Ecometer (TEK603) is connected to.",
-                "title": "Proteus Ecometer"
+                "title": "USB Connection"
+            },
+            "tcp": {
+                "data": {
+                    "host": "Host",
+                    "port": "Port"
+                },
+                "description": "Enter TCP connection details for ser2net or similar TCP-to-serial bridge.",
+                "title": "TCP Connection"
             }
         }
     }

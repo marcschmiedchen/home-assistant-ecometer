@@ -7,10 +7,25 @@
         "step": {
             "user": {
                 "data": {
+                    "connection_type": "Verbindungstyp"
+                },
+                "description": "Verbindungstyp für Proteus Ecometer (TEK603) auswählen.",
+                "title": "TEK603 / Proteus Ecometer"
+            },
+            "usb": {
+                "data": {
                     "resource": "USB-Port"
                 },
                 "description": "USB-Port auf dem der Füllstandssensor installiert ist",
-                "title": "TEK603 / Proteus Ecometer"
+                "title": "USB-Verbindung"
+            },
+            "tcp": {
+                "data": {
+                    "host": "Host",
+                    "port": "Port"
+                },
+                "description": "TCP-Verbindungsdetails für ser2net oder ähnliche TCP-zu-Serial-Bridge eingeben.",
+                "title": "TCP-Verbindung"
             }
         }
     }
