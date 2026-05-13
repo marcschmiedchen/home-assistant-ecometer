@@ -44,7 +44,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         # For USB: url = device path (e.g., /dev/ttyUSB0)
         # For TCP: url = socket://host:port
         transport, protocol = await serial_asyncio_fast.create_serial_connection(
-            hass.loop, TEK603, url, baudrate=11520
+            hass.loop, TEK603, url, baudrate=115200
         )
     except Exception as e:
         raise ConfigEntryNotReady(f"Failed to open {url}: {e}") from e
