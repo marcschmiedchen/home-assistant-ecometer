@@ -2,9 +2,12 @@
 Config flow for Proteus Ecometer integration
 """
 
+from typing import Any
+
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.const import CONF_RESOURCE
+from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import selector
 from serial.tools.list_ports import comports
 
@@ -13,16 +16,22 @@ from .const import CONF_HOST
 from .const import CONF_PORT
 from .const import CONNECTION_TCP
 from .const import CONNECTION_USB
+from .const import DEFAULT_TCP_HOST
+from .const import DEFAULT_TCP_PORT
 from .const import DOMAIN
+from .const import USB_PRODUCT
+from .const import USB_VENDOR
 
 
-class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    def __init__(self):
+class EcometerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    def __init__(self) -> None:
         super().__init__()
-        self._connection_type = None
-        self._user_input = {}
+        self._connection_type: str | None = None
+        self._user_input: dict[str, Any] = {}
 
-    async def async_step_user(self, user_input=None):
+    async def async_step_user(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         """First step: choose connection type."""
         if user_input is not None:
             self._connection_type = user_input[CONF_CONNECTION_TYPE]
@@ -47,7 +56,9 @@ class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
         return self.async_show_form(step_id="user", data_schema=schema, errors={})
 
-    async def async_step_usb(self, user_input=None):
+    async def async_step_usb(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         """Second step for USB connection: select serial port."""
         if user_input is not None:
             self._user_input.update(user_input)
@@ -65,8 +76,8 @@ class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             (
                 p.device
                 for p in ports
-                if (p.product or "").startswith("CP2102")
-                and p.manufacturer == "Silicon Labs"
+                if (p.product or "").startswith(USB_PRODUCT)
+                and p.manufacturer == USB_VENDOR
             ),
             ports[0].device,
         )
@@ -82,7 +93,9 @@ class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
         return self.async_show_form(step_id="usb", data_schema=schema, errors={})
 
-    async def async_step_tcp(self, user_input=None):
+    async def async_step_tcp(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         """Second step for TCP connection: enter host and port."""
         if user_input is not None:
             self._user_input.update(user_input)
@@ -91,8 +104,8 @@ class EcometerCustomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         schema = vol.Schema(
             {
-                vol.Required(CONF_HOST, default="localhost"): str,
-                vol.Required(CONF_PORT, default=2000): vol.All(
+                vol.Required(CONF_HOST, default=DEFAULT_TCP_HOST): str,
+                vol.Required(CONF_PORT, default=DEFAULT_TCP_PORT): vol.All(
                     vol.Coerce(int), vol.Range(min=1, max=65535)
                 ),
             }

@@ -4,6 +4,7 @@ Proteus Ecometer integration for home assistant
 
 import logging
 
+import serial
 import serial_asyncio_fast
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.config_entries import ConfigEntryNotReady
@@ -13,6 +14,7 @@ from homeassistant.core import HomeAssistant
 from serial.tools.list_ports import comports
 from tek603 import TEK603
 
+from .const import BAUD_RATE
 from .const import CONF_CONNECTION_TYPE
 from .const import CONF_HOST
 from .const import CONF_PORT
@@ -44,9 +46,9 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         # For USB: url = device path (e.g., /dev/ttyUSB0)
         # For TCP: url = socket://host:port
         transport, protocol = await serial_asyncio_fast.create_serial_connection(
-            hass.loop, TEK603, url, baudrate=115200
+            hass.loop, TEK603, url, baudrate=BAUD_RATE
         )
-    except Exception as e:
+    except (serial.SerialException, OSError, TimeoutError) as e:
         raise ConfigEntryNotReady(f"Failed to open {url}: {e}") from e
 
     hass.data[DOMAIN]["protocol"] = protocol
@@ -62,7 +64,10 @@ async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
     """Close the serial connection and unload platforms."""
     transport = hass.data[DOMAIN].get("transport")
     if transport and not transport.is_closing():
-        transport.close()
+        try:
+            transport.close()
+        except (serial.SerialException, OSError) as ex:
+            _LOGGER.warning("Failed to close transport: %s", ex)
     hass.data[DOMAIN].clear()
     return await hass.config_entries.async_unload_platforms(
         config_entry, [Platform.SENSOR]

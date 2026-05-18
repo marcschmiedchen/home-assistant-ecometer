@@ -4,3 +4,9 @@ tek603/__pycache__/*
 .pytest_cache/*
 CLAUDE.md
 .gitignore
+custom_components/ecometer/__pycache__/*
+*.pyc
+custom_components/ecometer/__pycache__/__init__.cpython-313.pyc
+custom_components/ecometer/__pycache__/config_flow.cpython-313.pyc
+custom_components/ecometer/__pycache__/const.cpython-313.pyc
+custom_components/ecometer/__pycache__/sensor.cpython-313.pyc
