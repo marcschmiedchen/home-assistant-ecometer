@@ -3,6 +3,7 @@ tek603/__pycache__/*
 .claude/*
 .pytest_cache/*
 CLAUDE.md
+CODING_AGENT.md
 .gitignore
 custom_components/ecometer/__pycache__/*
 *.pyc

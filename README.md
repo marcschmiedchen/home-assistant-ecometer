@@ -10,16 +10,12 @@
 <a name="english"></a>
 # Proteus Ecometer — Home Assistant Integration
 
-Custom component for [Home Assistant](https://www.home-assistant.io/) that integrates the **Proteus TEK603 Ecometer** ultrasonic liquid level sensor via USB.
+Custom component for [Home Assistant](https://www.home-assistant.io/) that integrates the **Proteus TEK603 Ecometer** ultrasonic liquid level sensor via USB or TCP.
 
 ## About the Device
 
 The [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecometer/) is an ultrasonic sensor for measuring liquid levels in tanks and vessels. It connects via USB (Silicon Labs CP2102 adapter) at 115200 baud.
 
-- Manufacturer: [Proteus Messtechnik GmbH](https://www.proteus.de/)
-- Model: TEK603
-- Interface: USB (CP2102)
-- Protocol: reverse-engineered
 
 ## Sensors
 
@@ -35,7 +31,7 @@ The [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecomet
 1. Copy `custom_components/ecometer/` into your HA config `custom_components/` directory.
 2. Restart Home Assistant.
 3. Go to **Settings → Integrations → Add Integration** and search for **Proteus Ecometer**.
-4. Select the USB port the device is connected to (CP2102 auto-detected if present).
+4. Provide the connection details.
 
 ### Via HACS
 
@@ -64,12 +60,8 @@ Benutzerdefinierte Komponente für [Home Assistant](https://www.home-assistant.i
 
 ## Über das Gerät
 
-Der [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecometer/) ist ein Ultraschallsensor zur Füllstandsmessung in Tanks und Behältern. Die Verbindung erfolgt per USB (Silicon Labs CP2102) mit 115200 Baud.
+Der [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecometer/) ist ein Ultraschallsensor zur Füllstandsmessung in Tanks und Behältern. Die Verbindung erfolgt per USB oder TCP (Silicon Labs CP2102) mit 115200 Baud.
 
-- Hersteller: [Proteus Messtechnik GmbH](https://www.proteus.de/)
-- Modell: TEK603
-- Schnittstelle: USB (CP2102)
-- Protokoll: reverse-engineered
 
 ## Sensoren
 
@@ -85,7 +77,7 @@ Der [Proteus Ecometer](https://www.proteus.de/produkte/fuellstandsmessung/ecomet
 1. Den Ordner `custom_components/ecometer/` in das `custom_components/`-Verzeichnis der HA-Konfiguration kopieren.
 2. Home Assistant neu starten.
 3. Unter **Einstellungen → Integrationen → Integration hinzufügen** nach **Proteus Ecometer** suchen.
-4. Den USB-Port auswählen (CP2102 wird automatisch erkannt, falls vorhanden).
+4. Verbindung konfigurieren
 
 ### Über HACS
 

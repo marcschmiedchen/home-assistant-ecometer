@@ -23,7 +23,6 @@ from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Set up the custom component over the config entry."""
     hass.data.setdefault(DOMAIN, {})
